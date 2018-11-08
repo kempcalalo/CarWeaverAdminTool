@@ -56,7 +56,12 @@
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CarWeaverAdminTool.Core\CarWeaverAdminTool.Core.csproj">
+      <Project>{cae2fa74-2eee-4219-9f88-db93ecac6d96}</Project>
+      <Name>CarWeaverAdminTool.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

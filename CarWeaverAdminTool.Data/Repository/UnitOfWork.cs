@@ -14,6 +14,11 @@ namespace CarWeaverAdminTool.Data.Repository
 
         public CarWeaverAdminToolAppContext DbContext => _context ?? (_context = new CarWeaverAdminToolAppContext());
 
+        public async Task SaveAsync()
+        {
+            await DbContext.SaveChangesAsync();
+        }
+
         protected void Dispose(bool disposing)
         {
             if (!this._disposed)
