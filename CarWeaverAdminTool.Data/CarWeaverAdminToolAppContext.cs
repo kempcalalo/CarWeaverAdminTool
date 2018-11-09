@@ -27,7 +27,7 @@ namespace CarWeaverAdminTool.Data
         {
             ChangeTracker.DetectChanges();
 
-            var auditable = ChangeTracker.Entries<IBaseEntity>().ToList();
+            var auditable = ChangeTracker.Entries<IAuditPropertiesEntity>().ToList();
 
             if (!auditable.Any()) return base.SaveChangesAsync();
 
@@ -38,10 +38,10 @@ namespace CarWeaverAdminTool.Data
                 switch (record.State)
                 {
                     case EntityState.Added:
-                        if (record.Entity.Id == Guid.Empty)
-                        {
-                            record.Entity.Id = Guid.NewGuid();
-                        }
+                        //if (record.Entity.Id == Guid.Empty)
+                        //{
+                        //    record.Entity.Id = Guid.NewGuid();
+                        //}
                         record.Entity.CreatedDateTime = DateTime.Now;
                         record.Entity.CreatedBy = userIdentity;
                         break;
