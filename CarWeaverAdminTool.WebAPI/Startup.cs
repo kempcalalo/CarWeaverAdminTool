@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using Ninject;
+
 
 [assembly: OwinStartup(typeof(CarWeaverAdminTool.WebAPI.Startup))]
 namespace CarWeaverAdminTool.WebAPI
@@ -18,7 +18,12 @@ namespace CarWeaverAdminTool.WebAPI
             ConfigureAuth(app);
 
             HttpConfiguration config = new HttpConfiguration();
-            WebApiConfig.Register(config);
+
+            //Configure AutoFac (http://autofac.org/) for DependencyResolver
+            ConfigureComposition(config);
+
+            //Configure WebApi
+            ConfigureWebApi(config);
             app.UseWebApi(config);
         }
     }
