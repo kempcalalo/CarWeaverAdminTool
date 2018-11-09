@@ -2,6 +2,7 @@
 using System.Web.Http;
 using CarWeaverAdminTool.WebAPI.Identity;
 using CarWeaverAdminTool.WebAPI.Extensions;
+using System.Configuration;
 
 namespace CarWeaverAdminTool.WebAPI
 {
@@ -16,12 +17,11 @@ namespace CarWeaverAdminTool.WebAPI
         {
             var builder = new ContainerBuilder();
 
-
             builder.RegisterAssemblyTypes(typeof(Startup).Assembly)
                 .Where(t => t.Name.EndsWith("Controller"))
                 .AsSelf();
 
-            builder.RegisterInstance(new DomainUserLogInProvider("unevol.cu"))
+            builder.RegisterInstance(new DomainUserLogInProvider(ConfigurationManager.AppSettings["DomainName"]))
                 .As<ILoginProvider>()
                 .SingleInstance();
 
