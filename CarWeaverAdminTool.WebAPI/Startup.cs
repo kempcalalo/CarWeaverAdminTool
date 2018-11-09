@@ -24,6 +24,10 @@ namespace CarWeaverAdminTool.WebAPI
 
             //Configure WebApi
             ConfigureWebApi(config);
+
+            //Call to our swagger
+            SwaggerConfig.Register(config);
+
             app.UseWebApi(config);
         }
     }
